@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  #qr-reader {
+    margin: 0 auto 1rem auto;
+    border: 2px solid #ccc;
+    padding: 10px;
+    display: inline-block;
+  }
+  
+  #qr-result {
+    font-weight: bold;
+    color: #2b2b2b;
+  }
+  
+  #stop-scan-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }

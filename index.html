@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-GALERIA</title>
+    <link rel="stylesheet" href="style.css">
+   
+    <script src="https://unpkg.com/html5-qrcode/html5-qrcode.min.js"></script>
+</head>
+<body>
+
+
+    <h1>Escáner de Códigos QR</h1>
+
+    <!-- Contenedor que usará la librería para mostrar la cámara -->
+    <div id="qr-reader" style="width: 300px"></div>
+
+    <!-- Mostrar el resultado del escaneo -->
+    <p>Resultado: <span id="qr-result">N/A</span></p>
+
+    <!-- Opcional: Botón para detener el escaneo -->
+    <button id="stop-scan-button">Detener escáner</button>
+
+
+    
+    <script src="main.js"></script>
+</body>
+</html>
