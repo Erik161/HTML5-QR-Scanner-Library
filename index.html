@@ -10,29 +10,67 @@
 </head>
 <body>
 
-    <h1>Escáner QR (Bottom Sheet)</h1>
+    <h1>Escáner QR</h1>
 
-    <!-- Contenedor para la cámara -->
+    <!-- Contenedor de la cámara (inicialmente oculto), 
+         manejado por tu JS con html5-qrcode -->
     <div id="qr-reader"></div>
 
-    <!-- Botones -->
+    <!-- Botones de ejemplo -->
     <button id="btn-start" class="btn-scan">Iniciar escaneo</button>
-    <button id="btn-stop" class="btn">Detener escaneo</button>
+    <button id="btn-stop" class="btn-scan" style="display: none;">Detener escaneo</button>
 
-    <!-- Modal tipo bottom sheet -->
+    <!-- Modal (bottom sheet) -->
     <div id="myModal" class="modal">
       <div class="modal-content">
+        <!-- Botón de cierre (X) -->
         <span class="close">&times;</span>
+
+        <!-- Encabezado -->
         <div class="modal-header">
-          <h2>QR detectado</h2>
+          <h2>New QR_CODE detected!</h2>
         </div>
+
+        <!-- Tabs (TYPE / URL) -->
+        <div class="tabs">
+          <button class="tab tab-active">TYPE</button>
+          <button class="tab">URL</button>
+        </div>
+
+        <!-- Cuerpo del modal -->
         <div class="modal-body">
-          <p><strong>Link:</strong></p>
-          <p>
-            <a id="qr-link" href="#" target="_blank" rel="noopener noreferrer">
-              Aquí se mostrará la URL
-            </a>
-          </p>
+          <!-- Campo con la URL detectada (readonly) -->
+          <div class="field-block">
+            <input 
+              id="qr-input" 
+              type="text" 
+              value="https://scanapp.org" 
+              readonly
+            />
+          </div>
+
+          <!-- Acciones (share, copy, etc.) -->
+          <div class="actions">
+            <button class="btn-action share" title="Compartir">
+              <img src="https://cdn-icons-png.flaticon.com/512/10563/10563963.png" alt="share" />
+            </button>
+            <button class="btn-action copy" title="Copiar">
+              <img src="https://cdn-icons-png.flaticon.com/512/3388/3388793.png" alt="copy" />
+            </button>
+          </div>
+
+          <!-- Texto adicional -->
+          <div class="text-block">
+            <strong>Text</strong>
+            <p class="text-contents">https://scanapp.org</p>
+          </div>
+        </div>
+
+        <!-- Footer con botón para cerrar -->
+        <div class="modal-footer">
+          <button id="btn-close-modal" class="btn-close-modal">
+            Close and scan another
+          </button>
         </div>
       </div>
     </div>

@@ -1,14 +1,21 @@
-body {
+/* ===== Reset / Baseline ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* ===== Body y títulos ===== */
+  body {
     font-family: Arial, sans-serif;
     margin: 20px;
     text-align: center;
   }
-
   h1 {
     margin-bottom: 1rem;
   }
-
-  /* Contenedor de la cámara, inicialmente oculto */
+  
+  /* ===== Contenedor de la cámara ===== */
   #qr-reader {
     display: none;
     margin: 0 auto 1rem auto;
@@ -18,7 +25,8 @@ body {
     height: auto;
     box-sizing: border-box;
   }
-
+  
+  /* ===== Botón escanear / detener ===== */
   .btn-scan {
     font-weight: 700;
     border-radius: 5px;
@@ -28,46 +36,37 @@ body {
     padding: 15px 70px;
     margin: 5px;
     cursor: pointer;
-}
-
-  /* Botón de detener, inicialmente oculto */
-  #btn-stop {
-    display: none;
   }
-
-  /* Modal */
+  
+  /* ===== Modal (background) ===== */
   .modal {
     display: none; /* Oculto por defecto */
     position: fixed;
-    z-index: 1; /* sobre el contenido */
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    /* Fondo semitransparente */
     background-color: rgba(0, 0, 0, 0.4);
-    z-index: 9999;
-    overflow: hidden;
+    overflow: hidden; /* Para que no se desplace el fondo */
   }
-
+  
+  /* ===== Contenedor principal del bottom sheet ===== */
   .modal-content {
-     /* Ubicado en la parte baja de la pantalla */
-     position: absolute;
-     left: 0;
-     bottom: 0;
-     width: 100%;
-     /* Altura ajustable según prefieras */
-     max-height: 80%;
-     background-color: #fff;
-     border-radius: 12px 12px 0 0;
-     padding: 20px;
-     box-sizing: border-box;
-     /* Animación para deslizar desde abajo */
-     animation: slideUp 0.3s ease-out;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 80%; /* Ajustable */
+    background-color: #fff;
+    border-radius: 12px 12px 0 0;
+    padding: 20px;
+    box-sizing: border-box;
+  
+    /* Animación para deslizar desde abajo */
+    animation: slideUp 0.3s ease-out;
   }
-
-
-  /* Animación de entrada */
   @keyframes slideUp {
     from {
       transform: translateY(100%);
@@ -76,7 +75,8 @@ body {
       transform: translateY(0);
     }
   }
-
+  
+  /* ===== Botón de cierre (X) ===== */
   .close {
     position: absolute;
     top: 15px;
@@ -86,33 +86,120 @@ body {
     color: #999;
     cursor: pointer;
   }
-
   .close:hover {
     color: #333;
   }
-
-
-  /* Contenido dentro del modal */
+  
+  /* ===== Secciones dentro del modal ===== */
   .modal-header {
     margin-bottom: 1rem;
+    text-align: left; /* Si prefieres alinear a la izquierda */
   }
   .modal-header h2 {
     margin: 0;
+    font-size: 1.2rem; 
+    font-weight: bold;
   }
+  
+  .tabs {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  .tab {
+    flex: 1;
+    padding: 10px 0;
+    background-color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .tab-active {
+    background-color: #ffffff;
+    border-bottom: 2px solid #003865;
+  }
+  
   .modal-body {
-    overflow-y: auto; /* por si se genera contenido extenso */
-    max-height: calc(80vh - 60px); /* Ajuste para no tapar el título y el cierre */
+    overflow-y: auto; /* Desplazamiento si es muy grande */
+    max-height: calc(80vh - 120px); /* Ajuste para no tapar header/cierre */
+    text-align: left; /* Contenido alineado a la izquierda */
+    padding-right: 5px; /* Algo de espacio para el scrollbar */
   }
-
-  #qr-link {
-    color: blue;
-    text-decoration: underline;
-    word-wrap: break-word; 
+  
+  /* Campo con la URL */
+  .field-block {
+    margin-bottom: 1rem;
   }
-
-   /* -- Ajustes responsivos -- */
-   @media (max-width: 768px) {
+  .field-block input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Botones de acciones (share / copy) */
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  .btn-action {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    transition: background 0.2s;
+  }
+  .btn-action:hover {
+    background: #f2f2f2;
+  }
+  .btn-action img {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+  
+  /* Texto adicional */
+  .text-block {
+    margin-bottom: 1rem;
+  }
+  .text-block strong {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .text-contents {
+    margin-left: 5px;
+  }
+  
+  /* Footer del modal */
+  .modal-footer {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .btn-close-modal {
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: 1px solid #003865;
+    background-color: #003865;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-close-modal:hover {
+    opacity: 0.9;
+  }
+  
+  /* Responsivo para pantallas pequeñas */
+  @media (max-width: 768px) {
     #qr-reader {
       width: 90%;
     }
+  
+    .modal-content {
+      max-height: 85%;
+    }
+    .modal-body {
+      max-height: calc(85vh - 120px);
+    }
   }
+  
