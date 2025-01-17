@@ -7,6 +7,7 @@
 
   /* ===== Body y títulos ===== */
   body {
+    font-family: Arial, sans-serif;
     margin: 20px;
     text-align: center;
     background: #f2f2f2;
@@ -113,7 +114,7 @@
     display: block;
     margin: 1rem 0;
     font-weight: bold;
-    word-break: break-all; /* Para que no se desborde en móviles */
+    word-break: break-all; 
     color: #003865;
     text-decoration: underline;
   }
