@@ -10,15 +10,14 @@
 </head>
 <body>
 
+    <h1>Escáner QR</h1>
 
-    <h1>Escáner QR con Botón y Modal</h1>
-
-    <!-- Contenedor para la cámara, inicialmente oculto -->
+    <!-- Contenedor para la cámara -->
     <div id="qr-reader"></div>
 
-    <!-- Botones para controlar el escaneo -->
+    <!-- Botones -->
     <button id="btn-start" class="btn">Iniciar escaneo</button>
-    <button id="btn-stop" class="btn" style="display: none;">Detener escaneo</button>
+    <button id="btn-stop" class="btn">Detener escaneo</button>
 
     <!-- Modal para mostrar el resultado del QR -->
     <div id="myModal" class="modal">
@@ -26,14 +25,11 @@
         <span class="close">&times;</span>
         <h2>Información del QR detectado</h2>
         <p>
-          <strong>Link:</strong> 
+          <strong>Link:</strong>
           <a id="qr-link" href="#" target="_blank" rel="noopener noreferrer">Abrir enlace</a>
         </p>
       </div>
     </div>
-
-
-
     
     <script src="main.js"></script>
 </body>
