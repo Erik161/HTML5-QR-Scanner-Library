@@ -10,24 +10,30 @@
 </head>
 <body>
 
-   
+    <h1>Escáner QR (Bottom Sheet)</h1>
 
     <!-- Contenedor para la cámara -->
     <div id="qr-reader"></div>
 
     <!-- Botones -->
-    <button id="btn-start" class="btn-scan">Escanear QR</button>
+    <button id="btn-start" class="btn-scan">Iniciar escaneo</button>
     <button id="btn-stop" class="btn">Detener escaneo</button>
 
-    <!-- Modal para mostrar el resultado del QR -->
+    <!-- Modal tipo bottom sheet -->
     <div id="myModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <h2>Información del QR detectado</h2>
-        <p>
-          <strong>Link:</strong>
-          <a id="qr-link" href="#" target="_blank" rel="noopener noreferrer">Abrir enlace</a>
-        </p>
+        <div class="modal-header">
+          <h2>QR detectado</h2>
+        </div>
+        <div class="modal-body">
+          <p><strong>Link:</strong></p>
+          <p>
+            <a id="qr-link" href="#" target="_blank" rel="noopener noreferrer">
+              Aquí se mostrará la URL
+            </a>
+          </p>
+        </div>
       </div>
     </div>
     

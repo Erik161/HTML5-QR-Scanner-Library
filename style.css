@@ -16,6 +16,7 @@ body {
     padding: 10px;
     width: 300px;
     height: auto;
+    box-sizing: border-box;
   }
 
   .btn-scan {
@@ -45,35 +46,73 @@ body {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    overflow: hidden;
   }
 
   .modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    position: relative;
-    text-align: left;
+     /* Ubicado en la parte baja de la pantalla */
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     /* Altura ajustable según prefieras */
+     max-height: 80%;
+     background-color: #fff;
+     border-radius: 12px 12px 0 0;
+     padding: 20px;
+     box-sizing: border-box;
+     /* Animación para deslizar desde abajo */
+     animation: slideUp 0.3s ease-out;
+  }
+
+
+  /* Animación de entrada */
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
   }
 
   .close {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
   }
 
-  .close:hover,
-  .close:focus {
-    color: #000;
+  .close:hover {
+    color: #333;
+  }
+
+
+  /* Contenido dentro del modal */
+  .modal-header {
+    margin-bottom: 1rem;
+  }
+  .modal-header h2 {
+    margin: 0;
+  }
+  .modal-body {
+    overflow-y: auto; /* por si se genera contenido extenso */
+    max-height: calc(80vh - 60px); /* Ajuste para no tapar el título y el cierre */
   }
 
   #qr-link {
     color: blue;
     text-decoration: underline;
+    word-wrap: break-word; 
+  }
+
+   /* -- Ajustes responsivos -- */
+   @media (max-width: 768px) {
+    #qr-reader {
+      width: 90%;
+    }
   }
