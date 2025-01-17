@@ -12,36 +12,34 @@
 
     <h1>Escáner QR</h1>
 
-    <!-- Contenedor de la cámara (inicialmente oculto), -->
+    <!-- Contenedor de la cámara (inicialmente oculto) -->
     <div id="qr-reader"></div>
 
-    <!-- Botones de ejemplo -->
-    <button id="btn-start" class="btn-scan">Iniciar escaneo</button>
-    <button id="btn-stop" class="btn-scan" style="display: none;">Detener escaneo</button>
+    <!-- Botones -->
+    <button id="btn-start" class="qr_galeria_btn-scan">Iniciar escaneo</button>
+    <button id="btn-stop" class="qr_galeria_btn-scan" style="display: none;">Detener escaneo</button>
 
     <!-- Modal (bottom sheet) -->
-    <div id="myModal" class="modal">
-      <div class="modal-content">
+    <div id="myModal" class="qr_galeria_modal">
+      <div class="qr_galeria_modal-content">
         <!-- Botón de cierre (X) -->
-        <span class="close">&times;</span>
+        <span class="qr_galeria_close">&times;</span>
 
         <!-- Encabezado -->
-        <div class="modal-header">
-          <h2>Nuevo Codigo QR Detectado</h2>
+        <div class="qr_galeria_modal-header">
+          <h2>New QR_CODE detected!</h2>
         </div>
 
         <!-- Cuerpo del modal -->
-        <div class="modal-body">
+        <div class="qr_galeria_modal-body">
           <!-- Un enlace clickable para la URL escaneada -->
-          <a id="qr-link" class="detected-url" href="#" target="_blank">
-            
-          </a>
+          <a id="qr-link" class="qr_galeria_detected-url" href="#" target="_blank"></a>
         </div>
 
         <!-- Footer con botón para cerrar y reescanear -->
-        <div class="modal-footer">
-          <button id="btn-close-modal" class="btn-close-modal">
-           Cerrar y escanear de nuevo 
+        <div class="qr_galeria_modal-footer">
+          <button id="btn-close-modal" class="qr_galeria_btn-close-modal">
+            Close and scan another
           </button>
         </div>
       </div>

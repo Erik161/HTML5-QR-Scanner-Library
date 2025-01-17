@@ -12,14 +12,14 @@ let html5QrCode;
 
         // Modal
         const modal = document.getElementById("myModal");
-        const closeModal = document.querySelector(".close");
+        const closeModal = document.querySelector(".qr_galeria_close");
         const btnCloseModal = document.getElementById("btn-close-modal");
         const qrLink = document.getElementById("qr-link");
 
         // Config de la librería
         const config = {
           fps: 10,
-          qrbox: { width: 200, height: 200 }
+          qrbox: { width: 200, height: 200 },
         };
 
         // Success callback
