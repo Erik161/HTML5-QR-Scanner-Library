@@ -1,20 +1,21 @@
-/* ===== Reset / Baseline ===== */
-* {
+ /* ===== Reset / Baseline ===== */
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   /* ===== Body y títulos ===== */
   body {
     font-family: Arial, sans-serif;
     margin: 20px;
     text-align: center;
+    background: #f2f2f2;
   }
   h1 {
     margin-bottom: 1rem;
   }
-  
+
   /* ===== Contenedor de la cámara ===== */
   #qr-reader {
     display: none;
@@ -24,8 +25,9 @@
     width: 300px;
     height: auto;
     box-sizing: border-box;
+    background: #fff;
   }
-  
+
   /* ===== Botón escanear / detener ===== */
   .btn-scan {
     font-weight: 700;
@@ -37,10 +39,10 @@
     margin: 5px;
     cursor: pointer;
   }
-  
+
   /* ===== Modal (background) ===== */
   .modal {
-    display: none; /* Oculto por defecto */
+    display: none; 
     position: fixed;
     z-index: 9999;
     left: 0;
@@ -49,9 +51,9 @@
     height: 100%;
     /* Fondo semitransparente */
     background-color: rgba(0, 0, 0, 0.4);
-    overflow: hidden; /* Para que no se desplace el fondo */
+    overflow: hidden; 
   }
-  
+
   /* ===== Contenedor principal del bottom sheet ===== */
   .modal-content {
     position: absolute;
@@ -63,7 +65,6 @@
     border-radius: 12px 12px 0 0;
     padding: 20px;
     box-sizing: border-box;
-  
     /* Animación para deslizar desde abajo */
     animation: slideUp 0.3s ease-out;
   }
@@ -75,7 +76,7 @@
       transform: translateY(0);
     }
   }
-  
+
   /* ===== Botón de cierre (X) ===== */
   .close {
     position: absolute;
@@ -89,88 +90,35 @@
   .close:hover {
     color: #333;
   }
-  
-  /* ===== Secciones dentro del modal ===== */
+
+  /* ===== Contenido dentro del modal ===== */
   .modal-header {
     margin-bottom: 1rem;
-    text-align: left; /* Si prefieres alinear a la izquierda */
+    text-align: left;
   }
   .modal-header h2 {
     margin: 0;
-    font-size: 1.2rem; 
+    font-size: 1.2rem;
     font-weight: bold;
   }
-  
-  .tabs {
-    display: flex;
-    margin-bottom: 1rem;
-  }
-  .tab {
-    flex: 1;
-    padding: 10px 0;
-    background-color: #f1f1f1;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-  }
-  .tab-active {
-    background-color: #ffffff;
-    border-bottom: 2px solid #003865;
-  }
-  
+
   .modal-body {
-    overflow-y: auto; /* Desplazamiento si es muy grande */
-    max-height: calc(80vh - 120px); /* Ajuste para no tapar header/cierre */
-    text-align: left; /* Contenido alineado a la izquierda */
-    padding-right: 5px; /* Algo de espacio para el scrollbar */
+    overflow-y: auto;
+    max-height: calc(80vh - 120px);
+    text-align: left;
+    padding-right: 5px;
   }
-  
-  /* Campo con la URL */
-  .field-block {
-    margin-bottom: 1rem;
-  }
-  .field-block input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Botones de acciones (share / copy) */
-  .actions {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 1rem;
-  }
-  .btn-action {
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 6px;
-    border-radius: 50%;
-    transition: background 0.2s;
-  }
-  .btn-action:hover {
-    background: #f2f2f2;
-  }
-  .btn-action img {
-    width: 24px;
-    height: 24px;
+
+  /* URL detectada (clickable) */
+  .detected-url {
     display: block;
+    margin: 1rem 0;
+    font-weight: bold;
+    word-break: break-all;
+    color: #003865;
+    text-decoration: underline;
   }
-  
-  /* Texto adicional */
-  .text-block {
-    margin-bottom: 1rem;
-  }
-  .text-block strong {
-    display: block;
-    margin-bottom: 5px;
-  }
-  .text-contents {
-    margin-left: 5px;
-  }
-  
+
   /* Footer del modal */
   .modal-footer {
     margin-top: 1rem;
@@ -188,13 +136,12 @@
   .btn-close-modal:hover {
     opacity: 0.9;
   }
-  
+
   /* Responsivo para pantallas pequeñas */
   @media (max-width: 768px) {
     #qr-reader {
       width: 90%;
     }
-  
     .modal-content {
       max-height: 85%;
     }
@@ -202,4 +149,3 @@
       max-height: calc(85vh - 120px);
     }
   }
-  
