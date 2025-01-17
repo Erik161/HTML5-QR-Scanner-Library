@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Modal
   const modal = document.getElementById("myModal");
   const closeModal = document.querySelector(".close");
-  const qrLink = document.getElementById("qr-link");
+  const qrLink = document.getElementById("qr-input");
+  const textContentsP = document.querySelector(".text-contents");
 
   // Config de la librería
   const config = {
@@ -27,10 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
     stopScan();
 
     // Asignamos la URL al link
-    qrLink.href = decodedText;
-    qrLink.textContent = decodedText;
+    qrInput.value = decodedText;
+    
+    textContentsP.textContent = decodedText;
 
-    // Mostramos el modal tipo bottom sheet
+     // Mostrar el modal
     modal.style.display = "block";
   };
 
