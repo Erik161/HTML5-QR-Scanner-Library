@@ -1,46 +1,89 @@
-// Esperamos a que cargue el DOM
-document.addEventListener("DOMContentLoaded", function () {
-    // Función que se ejecutará cuando se reconozca correctamente un código QR
-    function onScanSuccess(decodedText, decodedResult) {
-      console.log(`Código detectado: ${decodedText}`, decodedResult);
-      // Mostramos el texto en un  dentro de la página
-      document.getElementById("qr-result").textContent = decodedText;
-    }
+ // Referencia a la instancia Html5Qrcode
+ let html5QrCode;
 
-    // Función para manejar errores (cámara bloqueada, permisos, etc.)
-    function onScanError(errorMessage) {
-      console.warn(`Error en el escaneo: ${errorMessage}`);
-    }
+ // Esperamos a que se cargue el DOM
+ document.addEventListener("DOMContentLoaded", () => {
+   // Instanciamos Html5Qrcode en el DIV 'qr-reader'
+   html5QrCode = new Html5Qrcode("qr-reader");
 
-    // Inicializamos la instancia de Html5Qrcode.
-    // "qr-reader" es el id del contenedor donde se mostrará la cámara
-    const html5QrCode = new Html5Qrcode("qr-reader");
+   // Elementos del DOM
+   const btnStart = document.getElementById("btn-start");
+   const btnStop = document.getElementById("btn-stop");
+   const qrReader = document.getElementById("qr-reader");
 
-    // Configuraciones básicas
-    const config = {
-      fps: 10, // fotogramas por segundo
-      // Se puede ajustar el cuadro de visualización (opcional)
-      qrbox: { width: 200, height: 200 },
-    };
+   // Modal
+   const modal = document.getElementById("myModal");
+   const closeModal = document.getElementsByClassName("close")[0];
+   const qrLink = document.getElementById("qr-link");
 
-    // Iniciamos el escaneo con la cámara trasera (en dispositivos compatibles)
-    html5QrCode
-      .start({ facingMode: "environment" }, config, onScanSuccess, onScanError)
-      .catch((err) => {
-        console.error("No se pudo iniciar la cámara:", err);
-      });
+   // Config
+   const config = {
+     fps: 10,  // frames por segundo
+     qrbox: { width: 200, height: 200 }
+   };
 
-    // Evento para el botón de detener
-    document
-      .getElementById("stop-scan-button")
-      .addEventListener("click", function () {
-        html5QrCode
-          .stop()
-          .then((ignore) => {
-            console.log("Escaneo detenido.");
-          })
-          .catch((err) => {
-            console.error("No se pudo detener el escaneo:", err);
-          });
-      });
-  });
+   // Callbacks de la librería
+   const onScanSuccess = (decodedText, decodedResult) => {
+     console.log("Código detectado: ", decodedText);
+
+     // Asignamos el link al <a>
+     qrLink.href = decodedText;
+     qrLink.textContent = decodedText;
+
+     // Mostramos el modal
+     modal.style.display = "block";
+
+     // (Opcional) Detener la cámara después de detectar:
+     // stopScan();
+   };
+
+   const onScanError = (errorMessage) => {
+     // Ojo: se ejecuta en cada frame que no encuentra un QR
+     // console.warn("Error en el escaneo: ", errorMessage);
+   };
+
+   // Inicia la cámara y el escaneo
+   const startScan = () => {
+     // Mostramos el contenedor y el botón "Detener"
+     qrReader.style.display = "block";
+     btnStop.style.display = "inline-block";
+
+     html5QrCode
+       .start({ facingMode: "environment" }, config, onScanSuccess, onScanError)
+       .then(() => {
+         console.log("Cámara iniciada correctamente");
+       })
+       .catch((err) => {
+         console.error("No se pudo iniciar la cámara:", err);
+       });
+   };
+
+   // Detiene la cámara y el escaneo
+   const stopScan = () => {
+     html5QrCode
+       .stop()
+       .then(() => {
+         console.log("Escaneo detenido");
+         // Ocultamos el contenedor y el botón "Detener"
+         qrReader.style.display = "none";
+         btnStop.style.display = "none";
+       })
+       .catch((err) => {
+         console.error("No se pudo detener el escaneo:", err);
+       });
+   };
+
+   // Eventos de botón
+   btnStart.addEventListener("click", startScan);
+   btnStop.addEventListener("click", stopScan);
+
+   // Eventos de modal
+   closeModal.onclick = () => {
+     modal.style.display = "none";
+   };
+   window.onclick = (event) => {
+     if (event.target == modal) {
+       modal.style.display = "none";
+     }
+   };
+ });

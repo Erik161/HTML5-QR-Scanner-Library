@@ -11,16 +11,27 @@
 <body>
 
 
-    <h1>Escáner de Códigos QR</h1>
+    <h1>Escáner QR con Botón y Modal</h1>
 
-    <!-- Contenedor que usará la librería para mostrar la cámara -->
-    <div id="qr-reader" style="width: 300px"></div>
+    <!-- Contenedor para la cámara, inicialmente oculto -->
+    <div id="qr-reader"></div>
 
-    <!-- Mostrar el resultado del escaneo -->
-    <p>Resultado: <span id="qr-result">N/A</span></p>
+    <!-- Botones para controlar el escaneo -->
+    <button id="btn-start" class="btn">Iniciar escaneo</button>
+    <button id="btn-stop" class="btn" style="display: none;">Detener escaneo</button>
 
-    <!-- Opcional: Botón para detener el escaneo -->
-    <button id="stop-scan-button">Detener escáner</button>
+    <!-- Modal para mostrar el resultado del QR -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Información del QR detectado</h2>
+        <p>
+          <strong>Link:</strong> 
+          <a id="qr-link" href="#" target="_blank" rel="noopener noreferrer">Abrir enlace</a>
+        </p>
+      </div>
+    </div>
+
 
 
     
