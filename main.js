@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Modal
   const modal = document.getElementById("myModal");
   const closeModal = document.querySelector(".close");
-  const qrLink = document.getElementById("qr-input");
+  const qrInput  = document.getElementById("qr-input");
   const textContentsP = document.querySelector(".text-contents");
 
   // Config de la librería
