@@ -18,11 +18,16 @@ body {
     height: auto;
   }
 
-  .btn {
-    padding: 10px 20px;
+  .btn-scan {
+    font-weight: 700;
+    border-radius: 5px;
+    border: 1px solid #003865;
+    background-color: #003865;
+    color: #ffffff;
+    padding: 15px 70px;
     margin: 5px;
     cursor: pointer;
-  }
+}
 
   /* Botón de detener, inicialmente oculto */
   #btn-stop {
