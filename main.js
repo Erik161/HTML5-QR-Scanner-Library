@@ -24,14 +24,20 @@ let html5QrCode;
 
         // Success callback
         const onScanSuccess = (decodedText, decodedResult) => {
+          //  Detiene el escaneo
           stopScan();
 
-          // Asignar la URL al enlace
-          qrLink.href = decodedText;
-          qrLink.textContent = decodedText;
-
+           // Opcional: 
+          // Asigna la URL al modal y lo muestra.
+          //qrLink.href = decodedText;
+          //qrLink.textContent = decodedText;
           // Mostrar el modal tipo bottom sheet
-          modal.style.display = "block";
+          //modal.style.display = "block";
+
+
+        // Redirigir automáticamente a la URL escaneada 
+        window.location.href = decodedText;
+
         };
 
         // Error callback (cuando no detecta QR en un frame)
